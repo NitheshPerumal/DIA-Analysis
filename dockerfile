@@ -29,4 +29,4 @@ RUN apt-get update -y\
 WORKDIR /mnt/f301355b-dd8a-4209-be92-e4b925cd5033/NP_search/DIA-Analysis
 
 RUN mkdir -p /mnt/f301355b-dd8a-4209-be92-e4b925cd5033/NP_search/DIA-Analysis \ 
-&& git clone https://github.com/NitheshPerumal/DIA-Analysis.git /mnt/f301355b-dd8a-4209-be92-e4b925cd5033/NP_search/DIA-Analysis
+&& git clone https://github.com/NitheshPerumal/DIA-Analysis.git || (cd /mnt/f301355b-dd8a-4209-be92-e4b925cd5033/NP_search/DIA-Analysis && git pull)
