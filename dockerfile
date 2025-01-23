@@ -1,4 +1,5 @@
-FROM rocker/tidyverse:4.3.1
+FROM rocker/tidyverse:4.0.0
+FROM rocker/r-ver:4.3.1
 
 RUN apt-get update -y\
 && apt-get install -y dpkg-dev zlib1g-dev libssl-dev libffi-dev zlib1g-dev libbz2-dev liblzma-dev build-essential libglpk40\
