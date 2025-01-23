@@ -6,23 +6,11 @@ RUN apt-get update -y\
 && apt-get install -y git\
 && R -e "install.packages('BiocManager')"\
 && R -e "BiocManager::install('MSstatsbig')"\
-&& R -e "BiocManager::install('MSstatsPTM')"\
-&& R -e "install.packages('MSstats')"\
-&& R -e "install.packages('doParallel')"\
-&& R -e "BiocManager::install('tidy verse')"\
-&& R -e "install.packages('foreach')"\
 && R -e "BiocManager::install('devtools')"\
+&& R -e "install.packages('MSstats')"\
+&& R -e "BiocManager::install('MSstats')"\
 && R -e "devtools::install_github('brian-bot/githubr')"\
 && R -e "install.packages('ggplot2')"\
-&& R -e "BiocManager::install('limma')"\
-&& R -e "install.packages('mclust')"\
-&& R -e "install.packages('psych')"\
-&& R -e "install.packages('RColorBrewer')"\
-&& R -e "install.packages('rlang')"\
-&& R -e "install.packages('R.utils')"\
-&& R -e "install.packages('statmod')"\
-&& R -e "install.packages('stringr')"\
-&& R -e "BiocManager::install('sva')"\
 && R -e "install.packages('utils')"
 
 # Set the working directory
