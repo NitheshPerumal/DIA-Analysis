@@ -1,10 +1,10 @@
-FROM rocker/tidyverse:4.0.0
+FROM rocker/tidyverse:4.3.1
 
 RUN apt-get update -y\
 && apt-get install -y dpkg-dev zlib1g-dev libssl-dev libffi-dev zlib1g-dev libbz2-dev liblzma-dev build-essential libglpk40\
 && apt-get install -y curl libcurl4-openssl-dev\
 && apt-get install -y git\
-&& R -e "install.packages('BiocManager')"\
+&& R -e "install.packages('BiocManager', version = '1.30.25')"\
 && R -e "BiocManager::install('MSstatsbig')"\
 && R -e "BiocManager::install('MSstatsPTM')"\
 && R -e "install.packages('data.table')"\
