@@ -1,4 +1,3 @@
-FROM rocker/tidyverse:4.0.0
 FROM rocker/r-ver:4.3.1
 
 RUN apt-get update -y\
@@ -8,11 +7,11 @@ RUN apt-get update -y\
 && R -e "install.packages('BiocManager')"\
 && R -e "BiocManager::install('MSstatsbig')"\
 && R -e "BiocManager::install('MSstatsPTM')"\
-&& R -e "install.packages('data.table')"\
+&& R -e "install.packages('MSstats')"\
 && R -e "install.packages('doParallel')"\
 && R -e "BiocManager::install('tidy verse')"\
 && R -e "install.packages('foreach')"\
-&& R -e "BiocManager::install('GenomicRanges')"\
+&& R -e "BiocManager::install('devtools')"\
 && R -e "devtools::install_github('brian-bot/githubr')"\
 && R -e "install.packages('ggplot2')"\
 && R -e "BiocManager::install('limma')"\
