@@ -13,6 +13,12 @@ library(MSstatsTMT)
 library(readr)
 library(data.table)
 
+
+packageurl <- "https://bioconductor.org/packages/3.16/bioc/src/contrib/MSstatsPTM_2.4.4.tar.gz"
+install.packages(packageurl, repos = NULL, type = "source")
+
+
+
 data = read.csv(".//home/rstudio/workdir/DIA-Analysis/data/msstats.csv")
 
 # Need to convert MSstats output from Fragpipe to MSstats input

@@ -1,4 +1,4 @@
-FROM rocker/r-ver:4.4
+FROM rocker/r-ver:4.4.0
 
 RUN apt-get update -y\
 && apt-get install -y dpkg-dev zlib1g-dev libssl-dev libffi-dev zlib1g-dev libbz2-dev liblzma-dev build-essential libglpk40\
