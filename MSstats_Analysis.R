@@ -1,5 +1,5 @@
-library(MSstats)
 BiocManager::install("MSstats")
+library(MSstats)
 library(MSstatsPTM)
 library(stringr)
 library(readr)
@@ -13,44 +13,20 @@ library(MSstatsTMT)
 library(readr)
 library(data.table)
 
-msstats_dil_nofaims <- read_csv("/home/rstudio/workdir/DIA-Analysis/data/msstats.csv")
-# msstats_ptm_dil_nofaims <- read_csv("/home/rstudio/workdir/DIA-Analysis/data/msstats.csv")
-# 
-# # Adding modified site into name for peptide level (ignore for protein level)
-# msstats_dil_nofaims$ProteinName = paste(msstats_dil_nofaims$ProteinName,
-#                                         msstats_dil_nofaims$PeptideSequence, sep = "_")
-# msstats_ptm_dil_nofaims$ProteinName = paste(msstats_ptm_dil_nofaims$ProteinName,
-#                                             msstats_ptm_dil_nofaims$PeptideSequence, sep = "_")
-# 
-# 
-# PPTM_dil_nofaims <- list(PROTEIN=msstats_dil_nofaims, PTM=msstats_ptm_dil_nofaims)
-# analyzed_data_dil_nofaims <- dataSummarizationPTM(
-#   PPTM_dil_nofaims,
-#   logTrans = 2,
-#   normalization = FALSE,
-#   normalization.PTM = FALSE,
-#   nameStandards = NULL,
-#   nameStandards.PTM = NULL,
-#   featureSubset = "all",
-#   featureSubset.PTM = "all",
-#   remove_uninformative_feature_outlier = FALSE,
-#   remove_uninformative_feature_outlier.PTM = FALSE,
-#   n_top_feature = "all",
-#   n_top_feature.PTM = "all",
-#   summaryMethod = "TMP",
-#   equalFeatureVar = TRUE,
-#   censoredInt = "NA",
-#   MBimpute = TRUE,
-#   MBimpute.PTM = TRUE,
-#   remove50missing = FALSE,
-#   fix_missing = NULL,
-#   use_log_file = TRUE,
-#   append = TRUE,
-#   verbose = TRUE,
-#   log_file_path = NULL,
-#   base = "MSstatsPTM_log_"
-# )
+data = read.csv(".//home/rstudio/workdir/DIA-Analysis/data/msstats.csv")
 
+# Need to convert MSstats output from Fragpipe to MSstats input
+converted_data <- bigFragPipetoMSstatsFormat(
+  "./20250106_DIA_noplexDIA/Msstats_data/msstats.csv",
+  "output_file.csv",
+  backend = "arrow"
+)
 
+# Manipulation to make it acceptable input for dataProcess
+converted_data = as.data.frame(dplyr::collect(converted_data))
 
-summarized_data <- MSstats::dataProcess(msstats_dil_nofaims)
+# Protein level from ion level
+summarized_data = dataProcess(converted_data)
+
+# Subset out protein level from other data
+prot <- summarized_data$ProteinLevelData

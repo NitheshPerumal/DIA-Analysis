@@ -1,10 +1,11 @@
-FROM rocker/r-ver:4.3.1
+FROM rocker/r-ver:4.4
 
 RUN apt-get update -y\
 && apt-get install -y dpkg-dev zlib1g-dev libssl-dev libffi-dev zlib1g-dev libbz2-dev liblzma-dev build-essential libglpk40\
 && apt-get install -y curl libcurl4-openssl-dev\
 && apt-get install -y git\
 && R -e "install.packages('BiocManager')"\
+&& R -e "BiocManager::install(version = "3.20")"\
 && R -e "BiocManager::install('MSstatsbig')"\
 && R -e "BiocManager::install('devtools')"\
 && R -e "install.packages('MSstats')"\
