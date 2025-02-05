@@ -5,7 +5,6 @@ RUN apt-get update -y\
 && apt-get install -y curl libcurl4-openssl-dev\
 && apt-get install -y git\
 && R -e "install.packages('BiocManager')"\
-&& R -e "BiocManager::install(version = "3.20")"\
 && R -e "BiocManager::install('MSstatsbig')"\
 && R -e "BiocManager::install('devtools')"\
 && R -e "install.packages('MSstats')"\
